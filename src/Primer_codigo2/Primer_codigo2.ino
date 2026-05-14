@@ -47,8 +47,8 @@ void setup() {
   miServo.attach(pinServo); //Configuración de servo
   miServo.write(105); //Este es el ángulo en donde empieza el servo
 
-  Serial.begin(9600); //Esta es la velocidad de la comunicación entre la compu y el arduino
-  delay(5000);
+ // Serial.begin(9600); //Esta es la velocidad de la comunicación entre la compu y el arduino
+
 }
 
 void loop() {
@@ -57,15 +57,15 @@ void loop() {
   distanciaCentro = medirDistancia(trigPinC, echoPinC); //función donde le indicamos que lea la información del ultrasónico centro
   distanciaIzquierda = medirDistancia(trigPinI, echoPinI); //función donde le indicamos que lea la información del ultrasónico izquierdo
 
-Serial.print("Centro: ");
-  Serial.println(distanciaCentro);
+//Serial.print("Centro: ");
+  //Serial.println(distanciaCentro);
 
-  Serial.print("Izquierda: ");
-  Serial.println(distanciaIzquierda);
+ // Serial.print("Izquierda: ");
+ // Serial.println(distanciaIzquierda);
 
   if (distanciaIzquierda < 20 && distanciaIzquierda > 10) { //Si la distancia centro es menor que la distancia límite(20) y la distancia centro es mayor que 5 se moverá nuestro servo
     miServo.write(80);
-    delay(2000);
+  
 
   }
   delay(50); 
@@ -104,5 +104,5 @@ void Avanzarmotores(){
 
     digitalWrite(IN3, LOW);
     digitalWrite(IN4, HIGH);
-    analogWrite(ENB, 80);
+    analogWrite(ENB, 100);
 }
