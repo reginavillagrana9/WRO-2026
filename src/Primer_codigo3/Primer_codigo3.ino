@@ -47,37 +47,32 @@ void setup() {
   miServo.attach(pinServo); //Configuración de servo
   miServo.write(105); //Este es el ángulo en donde empieza el servo
 
- // Serial.begin(9600); //Esta es la velocidad de la comunicación entre la compu y el arduino
+  Serial.begin(9600); //Esta es la velocidad de la comunicación entre la compu y el arduino
 
 }
 
 void loop() {
   Avanzarmotores();
-  distanciaDerecha = medirDistancia(trigPinD, echoPinD); //Acá es una función donde le indicamos que lea la información del ultrasónico derecho 
-  distanciaCentro = medirDistancia(trigPinC, echoPinC); //función donde le indicamos que lea la información del ultrasónico centro
-  distanciaIzquierda = medirDistancia(trigPinI, echoPinI); //función donde le indicamos que lea la información del ultrasónico izquierdo
+ //distanciaDerecha = medirDistancia(trigPinD, echoPinD); //Acá es una función donde le indicamos que lea la información del ultrasónico derecho 
+//  distanciaCentro = medirDistancia(trigPinC, echoPinC); //función donde le indicamos que lea la información del ultrasónico centro
+ distanciaIzquierda = medirDistancia(trigPinI, echoPinI); //función donde le indicamos que lea la información del ultrasónico izquierdo
 
-//Serial.print("Centro: ");
-  //Serial.println(distanciaCentro);
+Serial.print("Centro: ");
+  Serial.println(distanciaIzquierda);
 
  // Serial.print("Izquierda: ");
- // Serial.println(distanciaIzquierda);
+//  Serial.println(distanciaIzquierda);
 
-  if (distanciaIzquierda < 20 && distanciaIzquierda > 10) { //Si la distancia centro es menor que la distancia límite(20) y la distancia centro es mayor que 5 se moverá nuestro servo
-    miServo.write(80);
+//  if (distanciaIzquierda < 20 && distanciaIzquierda > 10) { //Si la distancia centro es menor que la distancia límite(20) y la distancia centro es mayor que 5 se moverá nuestro servo
+  //  miServo.write(80);
   
-
-  }
-  delay(50); 
-  miServo.write(105);
-
-  if (distanciaCentro < 70 && distanciaCentro > 50) { 
-    miServo.write(70);
+  if (distanciaIzquierda < 50 && distanciaIzquierda > 20) { 
+    miServo.write(90);
     delay(2000);
 
   }
-  delay(50); 
-  miServo.write(105);
+     miServo.write(100);
+  delay(50);
 
 }
 
